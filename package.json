@@ -1,0 +1,17 @@
+{
+  "name": "com.pkurri.gamestudiomcp",
+  "version": "1.0.0",
+  "displayName": "Game Studio MCP",
+  "description": "Advanced MCP server embedded in Unity Editor. Connect Claude, Windsurf, Cursor, and VS Code directly to Unity with game-studio-specific tools. Zero external dependencies.",
+  "unity": "2021.3",
+  "unityRelease": "0f1",
+  "documentationUrl": "https://github.com/pkurri-gamezone/game-studio-mcp#readme",
+  "changelogUrl": "https://github.com/pkurri-gamezone/game-studio-mcp/CHANGELOG.md",
+  "licensesUrl": "https://github.com/pkurri-gamezone/game-studio-mcp/LICENSE",
+  "keywords": ["mcp", "ai", "claude", "windsurf", "cursor", "automation", "game-dev"],
+  "author": {
+    "name": "pkurri-gamezone",
+    "url": "https://github.com/pkurri-gamezone"
+  },
+  "category": "Editor"
+}
