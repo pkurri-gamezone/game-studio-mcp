@@ -12,17 +12,42 @@ Connect **Claude Desktop, Windsurf, Cursor, VS Code, and GitHub Copilot CLI** di
 
 ## Why Game Studio MCP vs unity-mcp?
 
+### Architecture & Setup
 | Feature | unity-mcp | **game-studio-mcp** |
 |---|---|---|
 | Dependencies | Python 3.10 + uv | **Zero — pure C#** |
-| Windows support | Needs PATH setup | ✅ Works natively |
-| Game-studio tools | ❌ | ✅ Ads, IAP, GDPR, Levels, Sprint |
-| Level generation | ❌ | ✅ Procedural + AI-driven |
-| Compliance tools | ❌ | ✅ GDPR/ATT/IAP validation |
-| Sprint tracking | ❌ | ✅ Reads SPRINT_PLAN.md |
-| One-click IDE setup | ❌ | ✅ In-editor button per IDE |
-| CLI integration | ❌ | ✅ `game mcp configure --ide windsurf` |
-| Port conflict | 8080 | **8090 (no conflicts)** |
+| Windows support | Needs PATH/uv setup | ✅ Works natively |
+| Port | 8080 (conflicts) | **8090** |
+| IDE one-click setup | Dropdown in Unity | ✅ Per-IDE button + `game mcp configure` |
+| Multi-instance Unity | `set_active_instance` | ✅ `set_active_instance` (same) |
+
+### Tool Coverage
+| Category | unity-mcp (42 tools) | **game-studio-mcp (47 tools)** |
+|---|---|---|
+| Scene & GameObjects | ✅ | ✅ |
+| Scripts | ✅ | ✅ + `apply_text_edits` |
+| Materials | ✅ `manage_material` | ✅ + hex color, auto-apply |
+| Prefabs | ✅ `manage_prefabs` | ✅ + `list`, `get_info` |
+| UI | ✅ `manage_ui` | ✅ + canvas/button/text/image/panel |
+| Animation | ✅ `manage_animation` | ✅ + create clip/controller |
+| Camera | ✅ `manage_camera` | ✅ |
+| Textures | ✅ `manage_texture` | ✅ + compression, reimport |
+| ScriptableObjects | ✅ | ✅ |
+| Build | ✅ | ✅ + `set_bundle_id` |
+| Tests | ✅ | ✅ + `create_test`, `get_test_files` |
+| Editor control | ✅ `manage_editor` | ✅ + `get_editor_state` |
+| Components | ✅ `manage_components` | ✅ |
+| File search | ✅ `find_in_file` | ✅ |
+| Asset ops | ✅ `manage_asset` | ✅ |
+| Batch execution | ✅ `batch_execute` | ✅ |
+| Menu items | ✅ `execute_menu_item` | ✅ |
+| Refresh | ✅ `refresh_unity` | ✅ |
+| Unity Docs | ✅ `unity_docs` | ✅ |
+| **Game-studio tools** | ❌ | ✅ **Ads, IAP, GDPR** |
+| **Level generation** | ❌ | ✅ **Procedural + AI-driven** |
+| **Sprint tracking** | ❌ | ✅ **Reads SPRINT_PLAN.md** |
+| **Compliance audit** | ❌ | ✅ **run_audit, check_gdpr_consent** |
+| **CLI pipeline** | ❌ | ✅ **`game mcp configure`** |
 
 ---
 

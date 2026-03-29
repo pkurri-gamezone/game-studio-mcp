@@ -113,15 +113,19 @@ namespace GameStudioMCP
             DrawHR();
 
             // ── Available Tools ────────────────────────────────────────────────
-            GUILayout.Label("📦 30 Tools Available", EditorStyles.boldLabel);
+            GUILayout.Label("📦 47 Tools Available  (Full unity-mcp parity + game-studio extras)", EditorStyles.boldLabel);
             string[] categories = {
                 "Scene:     create_gameobject · delete_gameobject · find_gameobject · manage_scene",
-                "Scripts:   create_script · edit_script · read_script · validate_script · read_console",
+                "Scripts:   create_script · edit_script · read_script · validate_script · delete_script · read_console",
                 "Levels:    list_levels · load_level · generate_level · get_level_data",
                 "Monetize:  toggle_test_ads · get_iap_status · check_gdpr_consent · get_monetization_summary",
                 "Pipeline:  get_sprint_status · get_project_info · run_audit · get_game_metrics",
                 "Build:     trigger_build · get_build_settings · set_bundle_id · manage_packages",
-                "Tests:     run_tests · get_test_files · create_test"
+                "Tests:     run_tests · get_test_files · create_test",
+                "Core:      batch_execute · execute_menu_item · refresh_unity · manage_editor · manage_components",
+                "           find_in_file · manage_asset · unity_docs · get_editor_state · apply_text_edits",
+                "Assets:    manage_material · manage_prefabs · manage_ui · manage_animation · manage_camera",
+                "           manage_texture · manage_scriptable_object"
             };
             foreach (var cat in categories)
                 GUILayout.Label("  " + cat, EditorStyles.miniLabel);

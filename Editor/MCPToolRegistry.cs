@@ -24,6 +24,8 @@ namespace GameStudioMCP
             PipelineTools.Register();
             BuildTools.Register();
             TestTools.Register();
+            CoreUnityTools.Register();
+            AssetTools.Register();
         }
 
         public static void Register(string name, string definition, Func<string, string> handler)

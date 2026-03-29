@@ -1,6 +1,6 @@
 {
   "name": "com.pkurri.gamestudiomcp",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "displayName": "Game Studio MCP",
   "description": "Advanced MCP server embedded in Unity Editor. Connect Claude, Windsurf, Cursor, and VS Code directly to Unity with game-studio-specific tools. Zero external dependencies.",
   "unity": "2021.3",
