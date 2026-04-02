@@ -26,6 +26,14 @@ namespace GameStudioMCP
             TestTools.Register();
             CoreUnityTools.Register();
             AssetTools.Register();
+            PhysicsTools.Register();
+            LightingTools.Register();
+            AudioTools.Register();
+            ParticleTools.Register();
+            SpriteTools.Register();
+            InputTools.Register();
+            PostProcessTools.Register();
+            ProjectTools.Register();
         }
 
         public static void Register(string name, string definition, Func<string, string> handler)

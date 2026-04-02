@@ -98,9 +98,9 @@ namespace GameStudioMCP
         {
             long totalMemory = System.GC.GetTotalMemory(false);
             string scene     = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-            int    goCount   = Object.FindObjectsOfType<GameObject>().Length;
+            Light[] lights = Object.FindObjectsByType<Light>(FindObjectsInactive.Exclude);
 
-            return $"{{\"active_scene\":\"{scene}\",\"gameobject_count\":{goCount},\"managed_memory_mb\":{totalMemory / 1024 / 1024},\"unity_version\":\"{Application.unityVersion}\"}}";
+            return $"{{\"active_scene\":\"{scene}\",\"gameobject_count\":{lights.Length},\"managed_memory_mb\":{totalMemory / 1024 / 1024},\"unity_version\":\"{Application.unityVersion}\"}}";
         }
 
         private static string ParseArg(string json, string key)

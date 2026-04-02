@@ -241,7 +241,7 @@ namespace GameStudioMCP
 
                 if (parentGO == null)
                 {
-                    canvas = UnityEngine.Object.FindObjectOfType<Canvas>();
+                    canvas = UnityEngine.Object.FindAnyObjectByType<Canvas>();
                     if (canvas == null)
                     {
                         var canvasGO = new GameObject("Canvas");

@@ -14,7 +14,7 @@ namespace GameStudioMCP
 
         static ScriptTools()
         {
-            Application.logMessageReceived += OnLog;
+            EditorApplication.delayCall += () => Application.logMessageReceived += OnLog;
         }
 
         private static void OnLog(string msg, string stack, LogType type)

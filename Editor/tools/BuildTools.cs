@@ -1,5 +1,6 @@
 using System.Text.RegularExpressions;
 using UnityEditor;
+using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
 using UnityEngine;
 
@@ -76,12 +77,12 @@ namespace GameStudioMCP
             return $@"{{
   ""product_name"":""{PlayerSettings.productName}"",
   ""company_name"":""{PlayerSettings.companyName}"",
-  ""bundle_id_android"":""{PlayerSettings.GetApplicationIdentifier(BuildTargetGroup.Android)}"",
-  ""bundle_id_ios"":""{PlayerSettings.GetApplicationIdentifier(BuildTargetGroup.iOS)}"",
+  ""bundle_id_android"":""{PlayerSettings.GetApplicationIdentifier(NamedBuildTarget.Android)}"",
+  ""bundle_id_ios"":""{PlayerSettings.GetApplicationIdentifier(NamedBuildTarget.iOS)}"",
   ""version"":""{PlayerSettings.bundleVersion}"",
   ""active_platform"":""{EditorUserBuildSettings.activeBuildTarget}"",
   ""scenes"":[{sceneList}],
-  ""scripting_backend"":""{PlayerSettings.GetScriptingBackend(BuildTargetGroup.Android)}""
+  ""scripting_backend"":""{PlayerSettings.GetScriptingBackend(NamedBuildTarget.Android)}""
 }}";
         }
 
@@ -95,9 +96,9 @@ namespace GameStudioMCP
             EditorApplication.delayCall += () =>
             {
                 if (platform == "all" || platform == "android")
-                    PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, bundleId);
+                    PlayerSettings.SetApplicationIdentifier(NamedBuildTarget.Android, bundleId);
                 if (platform == "all" || platform == "ios")
-                    PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.iOS, bundleId);
+                    PlayerSettings.SetApplicationIdentifier(NamedBuildTarget.iOS, bundleId);
                 AssetDatabase.SaveAssets();
             };
 

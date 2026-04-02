@@ -60,7 +60,7 @@ namespace GameStudioMCP
             // Trigger via messaging — actual load happens in GameManager/LevelLoader
             EditorApplication.delayCall += () =>
             {
-                var gm = Object.FindObjectOfType<MonoBehaviour>();
+                var gm = Object.FindAnyObjectByType<MonoBehaviour>();
                 Debug.Log($"[GameStudioMCP] Requesting level load: {index}");
             };
             return $"{{\"action\":\"load_level\",\"index\":{index},\"message\":\"Level {index} load requested — ensure GameManager is in scene\"}}";

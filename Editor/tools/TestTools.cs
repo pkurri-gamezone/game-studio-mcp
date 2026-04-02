@@ -4,6 +4,11 @@ using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEngine;
 
+// Note: Test Runner API requires com.unity.test-framework package
+#if UNITY_TEST_TOOLS
+using UnityEditor.TestTools.TestRunner.Api;
+#endif
+
 namespace GameStudioMCP
 {
     public static class TestTools
@@ -33,23 +38,24 @@ namespace GameStudioMCP
             string mode   = ParseArg(args, "mode")   ?? "EditMode";
             string filter = ParseArg(args, "filter");
 
-            // Trigger via Test Runner API
+#if UNITY_TEST_TOOLS
             EditorApplication.delayCall += () =>
             {
-                var filter_obj = new UnityEditor.TestTools.TestRunner.Api.Filter
+                var filter_obj = new Filter
                 {
-                    testMode = mode == "PlayMode"
-                        ? UnityEditor.TestTools.TestRunner.Api.TestMode.PlayMode
-                        : UnityEditor.TestTools.TestRunner.Api.TestMode.EditMode
+                    testMode = mode == "PlayMode" ? TestMode.PlayMode : TestMode.EditMode
                 };
                 if (!string.IsNullOrEmpty(filter)) filter_obj.testNames = new[] { filter };
 
-                var api = UnityEditor.TestTools.TestRunner.Api.TestRunnerApi.CreateInstance<UnityEditor.TestTools.TestRunner.Api.TestRunnerApi>();
-                api.Execute(new UnityEditor.TestTools.TestRunner.Api.ExecutionSettings(filter_obj));
+                var api = TestRunnerApi.CreateInstance<TestRunnerApi>();
+                api.Execute(new ExecutionSettings(filter_obj));
                 Debug.Log($"[GameStudioMCP] Test run triggered: {mode} {filter ?? "all"}");
             };
-
-            return $"{{\"action\":\"run_tests\",\"mode\":\"{mode}\",\"filter\":\"{filter ?? "all"}\",\"message\":\"Tests started — check Test Runner window (Window > General > Test Runner)\"}}";
+            return $"{{\"action\":\"run_tests\",\"mode\":\"{mode}\",\"filter\":\"{filter ?? "all"}\",\"message\":\"Tests started — check Test Runner window\"}}";
+#else
+            Debug.LogWarning("[GameStudioMCP] Test Runner API not available — install com.unity.test-framework package");
+            return $"{{\"action\":\"run_tests\",\"mode\":\"{mode}\",\"error\":\"Test framework package not installed\"}}";
+#endif
         }
 
         private static string GetTestFiles(string args)
